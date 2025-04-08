@@ -23,9 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/tiendita/",
+            "baseHref": "/gestorTiendas/",
             "allowedCommonJsDependencies": ["lodash"],
-            "outputPath": "dist/tiendita",
+            "outputPath": "dist/gestorTiendas",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
