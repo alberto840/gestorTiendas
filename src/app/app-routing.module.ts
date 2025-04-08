@@ -21,6 +21,7 @@ import { CajaRegistradoraAddComponent } from './tiendita/tiendaAdmin/cajaRegistr
 import { CategoriaProductoAddComponent } from './tiendita/tiendaAdmin/categoriaProducto/categoria-producto-add/categoria-producto-add.component';
 import { GestionEmpleadosComponent } from './tiendita/tiendaAdmin/gestion-empleados/gestion-empleados.component';
 import { EmpleadoAddComponent } from './tiendita/tiendaAdmin/empleado-add/empleado-add.component';
+import { VentaAddComponent } from './tiendita/tiemdaEmpleado/venta/venta-add/venta-add.component';
 
 
 const routes: Routes = [ 
@@ -88,6 +89,10 @@ const routes: Routes = [
   {
     path: 'venta/perdida',
     component: VentaPerdidaComponent,
+  },
+  {
+    path: 'venta/vender',
+    component: VentaAddComponent,
   },
   {
     path: 'caja/gestion',

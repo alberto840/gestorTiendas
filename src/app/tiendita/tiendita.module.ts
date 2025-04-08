@@ -61,6 +61,7 @@ import { GestionEmpleadosComponent } from './tiendaAdmin/gestion-empleados/gesti
 import { LoginComponent } from "./interfaz/login/login.component";
 import { EmpleadoAddComponent } from './tiendaAdmin/empleado-add/empleado-add.component';
 import { RecibirMercanciaComponent } from './tiemdaEmpleado/pedidos/recibir-mercancia/recibir-mercancia.component';
+import { VentaAddComponent } from './tiemdaEmpleado/venta/venta-add/venta-add.component';
 
 @NgModule({
   imports: [
@@ -130,6 +131,7 @@ import { RecibirMercanciaComponent } from './tiemdaEmpleado/pedidos/recibir-merc
     LoginComponent,
     EmpleadoAddComponent,
     RecibirMercanciaComponent,
+    VentaAddComponent,
   ],
 })
 export class tienditaModule { }

@@ -25,6 +25,29 @@ export const navbarData: INavbarData[] = [
     ],
   },
   {
+    routeLink: 'Ventas',
+    icon: 'fas fa-box-open',
+    label: 'Ventas',
+    items: [
+      {
+        routeLink: '/venta/vender',
+        label: 'Vender Productos',
+      },
+      {
+        routeLink: '/venta/detalle',
+        label: 'Ventas Detalle',
+      },
+      {
+        routeLink: '/venta/lista',
+        label: 'Lista Ventas',
+      },
+      {
+        routeLink: '/venta/perdida',
+        label: 'Ventas Perdidas',
+      },
+    ],
+  },
+  {
     routeLink: 'Productos',
     icon: 'fas fa-box-open',
     label: 'Productos',
