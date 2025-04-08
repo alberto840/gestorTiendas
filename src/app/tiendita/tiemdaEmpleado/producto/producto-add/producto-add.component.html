@@ -1,0 +1,127 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+              <div class="inventual-breadcrumb-area-inner px-0.5">
+                  <h5 class="text-[20px] text-heading font-bold mb-3">Registrar Producto</h5>
+                  <div class="inventual-breadcrumb-area-inner-wrap">
+                      <span class="text-[14px] text-body font-normal inline-block me-2">Producto</span>
+                      <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                      <span class="text-[14px] text-body font-normal inline-block me-2">Registrar Producto</span>
+                  </div>
+              </div>
+          </div>
+          <div class="inventual-content-area px-7">
+             <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+               <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                  <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                   <div class="inventual-select-field mb-5">
+                     <h5 class="text-[15px] text-heading font-semibold mb-3">Nombre Producto</h5>
+                     <div class="inventual-input-field-style">
+                       <mat-form-field class="w-full" [floatLabel]="'always'">
+                         <mat-label class="hidden">Joseph Tylor</mat-label>
+                         <input matInput [placeholder]="'Ej. Choco Barra'" [(ngModel)]="producto.nombre">
+                       </mat-form-field>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                   <div class="inventual-select-field mb-5">
+                     <h5 class="text-[15px] text-heading font-semibold mb-3">Descripcion</h5>
+                     <div class="inventual-input-field-style">
+                       <mat-form-field class="w-full" [floatLabel]="'always'">
+                         <mat-label class="hidden">New York</mat-label>
+                         <input matInput [placeholder]="'Ej. Es un producto de calidad'" [(ngModel)]="producto.descripcion">
+                       </mat-form-field>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                   <div class="inventual-select-field mb-5">
+                     <h5 class="text-[15px] text-heading font-semibold mb-3">Categoria</h5>
+                     <div class="inventual-select-field-style">
+                       <mat-form-field>
+                         <mat-select class="block" [placeholder]="'Elige la categoria'">
+                           <mat-option value="language-1">Chocolates</mat-option>
+                           <mat-option value="language-2">Lácteos</mat-option>
+                           <mat-option value="language-3">Sopas</mat-option>
+                           <mat-option value="language-4">Sodas</mat-option>
+                         </mat-select>
+                       </mat-form-field>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                   <div class="inventual-select-field mb-5">
+                     <h5 class="text-[15px] text-heading font-semibold mb-3">Unidad Medida</h5>
+                     <div class="inventual-input-field-style">
+                       <mat-form-field class="w-full" [floatLabel]="'always'">
+                        <mat-label class="hidden">00 000 000 000</mat-label>
+                         <input matInput [placeholder]="'Ej. Barras, gramos'" [(ngModel)]="producto.unidad_medida">
+                       </mat-form-field>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                   <div class="inventual-select-field mb-5">
+                     <h5 class="text-[15px] text-heading font-semibold mb-3">Margen</h5>
+                     <div class="inventual-input-field-style">
+                       <mat-form-field class="w-full" [floatLabel]="'always'">
+                         <mat-label class="hidden">00 000 000 000</mat-label>
+                         <input matInput [placeholder]="'Ej. 10%'" [(ngModel)]="producto.margen">
+                       </mat-form-field>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                   <div class="inventual-select-field mb-5">
+                     <h5 class="text-[15px] text-heading font-semibold mb-3">Precio Actual (Bs.)</h5>
+                     <div class="inventual-input-field-style">
+                       <mat-form-field class="w-full" [floatLabel]="'always'">
+                         <mat-label class="hidden">00 000 000 000</mat-label>
+                         <input matInput type="number" [placeholder]="'Ej. 13.5'" [(ngModel)]="producto.precio_actual">
+                       </mat-form-field>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                   <div class="inventual-select-field mb-5">
+                     <h5 class="text-[15px] text-heading font-semibold mb-3">Marca</h5>
+                     <div class="inventual-input-field-style">
+                       <mat-form-field class="w-full" [floatLabel]="'always'">
+                         <mat-label class="hidden">00 000 000 000</mat-label>
+                         <input matInput [placeholder]="'Ej. Ceibo'" [(ngModel)]="producto.marca">
+                       </mat-form-field>
+                     </div>
+                   </div>
+                 </div>
+                <div class="col-span-12">
+                  <div class="inventual-material-btn pt-2.5 justify-end">
+                      <button mat-raised-button color="primary">Registrar Producto</button>
+                 </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="inventual-copyright-area pt-28 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+              <app-copyright></app-copyright>
+          </div>
+      </div>
+    </div>

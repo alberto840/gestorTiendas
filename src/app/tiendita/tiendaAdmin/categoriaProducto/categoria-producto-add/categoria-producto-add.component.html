@@ -1,0 +1,166 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menu></app-menu>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Categorias</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Administrador</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Categoria</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-3 md:col-span-12 sm:col-span-12">
+                        <div class="inventual-unit-content">
+                            <div class="inventual-select-field mb-7">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Nombre Categoria</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Kilogram</mat-label>
+                                        <input matInput [placeholder]="'Ej. Lacteos'" [(ngModel)]="categoria.nombre">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="inventual-select-field mb-7">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Prefijo SKU <span matTooltip="Este prefijo se registrará con mayusculas y posteriormente se usará en el SKU del producto al que se le asigne la categoria." [matTooltipPosition]="'right'">Θ</span></h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Kilogram</mat-label>
+                                        <input matInput [placeholder]="'Ej. LAC'" [(ngModel)]="categoria.prefijo_sku">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                              <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Categoria Padre <span matTooltip="Esta campo es opcional, solo sí quieres que tenga una categoria padre." [matTooltipPosition]="'right'">Θ</span></h5>
+                                <div class="inventual-select-field-style">
+                                  <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'(OPCIONAL)'">
+                                      <mat-option value="language-1">Abarrotes</mat-option>
+                                      <mat-option value="language-2">Granos Basicos</mat-option>
+                                      <mat-option value="language-3">Enlatados</mat-option>
+                                      <mat-option value="language-4">Lacteos</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="inventual-material-btn mb-7">
+                                <button mat-raised-button color="primary" class="mb-1">
+                                    Crear Categoria
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-9 md:col-span-12 sm:col-span-12">
+                        <div class="inventual-common-table">
+                            <table class="!min-w-full" mat-table [dataSource]="dataSource" matSort>
+
+                                <!-- Checkbox Column -->
+                                <ng-container matColumnDef="select">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                            [checked]="selection.hasValue() && isAllSelected()"
+                                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                            [aria-label]="checkboxLabel()">
+                                        </mat-checkbox>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                            (change)="$event ? selection.toggle(row) : null"
+                                            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                        </mat-checkbox>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="nombre">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Categoria </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="categoria_padre_id">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoría Padre </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div class="whitespace-nowrap">{{row.categoria_padre_id}}</div>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="prefijo_sku">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Prefijo SKU </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.prefijo_sku}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef> Accion </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div class="table-action-menu-wrap">
+                                            <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
+                                                class="common-action-menu-style"
+                                                aria-label="Example icon-button with a menu">
+                                                Accion <mat-icon>arrow_drop_down</mat-icon>
+                                            </button>
+                                            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                                <button mat-menu-item>
+                                                    <img src="assets/img/icon/action-2.png"
+                                                        alt="icon not found">
+                                                    <span>Editar Categoria</span>
+                                                </button>
+                                                <button mat-menu-item>
+                                                    <img src="assets/img/icon/action-6.png"
+                                                        alt="icon not found">
+                                                    <span>Eliminar Categoria</span>
+                                                </button>
+                                            </mat-menu>
+                                        </div>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                                    (click)="selection.toggle(row)">
+                                </tr>
+
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="13">
+                                        <div class="table-data-not-found">
+                                            <p>No data found</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <mat-paginator [pageSizeOptions]="[ 10, 25, 100]"
+                                aria-label="Select page of users"></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>
